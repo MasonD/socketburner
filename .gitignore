@@ -1,1 +1,3 @@
 node_modules
+home/*
+!home/socketburner.ns
