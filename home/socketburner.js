@@ -17,29 +17,33 @@ const
       object_document.getElementsByTagName("head")[0].appendChild(script);
     }),
   // responds to keyboard events
-  void_responder = async (object_keyboard_event) => {
+  void_responder = (object_keyboard_event, array_key_action) => {
     if (
       object_keyboard_event.ctrlKey &&
-      !object_keyboard_event.getModifierState(object_keyboard_event.key)
-    ) {
-      const string_input = object_document.getElementById(
-        "terminal-input-text-box"
-      );
-      switch (object_keyboard_event.key.toLowerCase()) {
-        case "/":
-          parent.quitSocketBurner();
+      !object_keyboard_event.getModifierState(object_keyboard_event.key) &&
+      object_keyboard_event.key.toLowerCase() === array_key_action[0]
+    )
+      switch (array_key_action.length) {
+        case 2:
+          array_key_action[1]();
+          break;
+        case 3:
+          array_key_action[1](array_key_action[2]);
+          break;
+        default:
+          throw new Error(
+            `Invalid parameter passed:\n${JSON.stringify[array_key_action]}`
+          );
       }
-      string_input.value = "";
-    }
   };
 export const main = async (ns) => {
   // start hotkey listener
-  const void_listener = async (object_keyboard_event) => {
+  const void_listener = (object_keyboard_event) => {
     try {
-      await void_responder(object_keyboard_event), ns.getScriptName();
+      void_responder(object_keyboard_event, ["/", parent.quitSocketBurner]);
     } catch (error) {
       console.log(error),
-        object_document.removeEventListener("keydown", await void_listener);
+      object_document.removeEventListener("keydown", void_listener);
     }
   };
   // load socket.io
@@ -47,19 +51,15 @@ export const main = async (ns) => {
     (await void_load_script(
       string_get_url(ns, "socket.io.slim.js", "application/javascript")
     ));
-  try {
-    const socket = io("http://localhost:3000", { secure: !1 });
-    socket.on("message", ({ name: name, contents: contents }) => {
-      ns.write(name, contents, "w");
-    }),
-    object_document.addEventListener("keydown", await void_listener),
-    // don't stop unless the exit signal is received
-    await new Promise((resolve) => {
-      parent.quitSocketBurner = () => {
-        ns.tprint("Exit signal received."), socket.close(), resolve();
-      };
-    });
-  } catch (error) {
-    throw new Error(error);
-  }
+  const socket = io("http://localhost:3000", { secure: !1 });
+  socket.on("message", ({ name: name, contents: contents }) => {
+    ns.write(name, contents, "w");
+  }),
+  object_document.addEventListener("keydown", void_listener),
+  // don't stop unless the exit signal is received
+  await new Promise((resolve) => {
+    parent.quitSocketBurner = () => {
+      ns.tprint("Exit signal received."), socket.close(), resolve();
+    };
+  });
 };

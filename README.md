@@ -18,8 +18,9 @@ yarn
 yarn start
 cp <directory_of_your_scripts>/* home/
 ```
-* Save the contents of `home/socketburner.ns` to an in-game file `socketburner.ns` and run it:
+* Save the scripts in `home/` into the game, then run `socketburner.js`:
 ```
-nano socketburner.ns
-run socketburner.ns
+nano socket.io.slim.js
+nano socketburner.js
+run socketburner.js
 ```
