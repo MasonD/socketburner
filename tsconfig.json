@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "allowJs": true,
+    "target": "es6",
+    "strict": true,
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./src/home/socket.io.slim.js", "./node_modules"],
+}
