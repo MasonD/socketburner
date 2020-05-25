@@ -1,4 +1,4 @@
 node_modules
-home/*
-!home/socketburner.js
-!home/socket.io.slim.js
+built/home/*
+!built/home/socketburner.js
+!built/home/socket.io.slim.js
