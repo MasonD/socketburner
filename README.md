@@ -20,7 +20,7 @@ cd socketburner/
 yarn
 ```
 
-Then save all the scripts in `home/` into their in-game equivalents using the in-game `nano`. E.g., for `socketburner.js`:
+Then save all the scripts in `built/home/` into their in-game equivalents using the in-game `nano`. E.g., for `built/socketburner.js`:
 ```
 nano socketburner.js
 ```
@@ -41,11 +41,11 @@ cd socketburner/
 yarn start
 ```
 
-Any changes made to files in `home/` will now be mirrored to files in the game.
+Any changes made to files in `built/home/` will now be mirrored to files in the game.
 
 To recursively copy scripts from a directory `<scripts_directory>/` into the game:
 ```
-cp -r <scripts_directory>/* home/
+cp -r <scripts_directory>/* built/home/
 ```
 
 Note that the above command will cause `socketburner` to fail if the directory used contains files that don't have the extensions ".txt", ".js", ".ns" or ".script". 
@@ -64,4 +64,4 @@ Ctrl+c
 ---
 
 ### Notes
-* Deleting, moving or renaming files in `home/` whilst `socketburner` is running will cause it to break.
+* Deleting, moving or renaming files in `built/home/` whilst `socketburner` is running will cause it to break.
