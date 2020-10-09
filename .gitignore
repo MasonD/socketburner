@@ -1,3 +1,6 @@
 node_modules
-home/*
-!home/socketburner.ns
+built/home/*
+yarn.lock
+package-lock.json
+!built/home/socketburner.js
+!built/home/socket.io.slim.js

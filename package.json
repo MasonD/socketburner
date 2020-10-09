@@ -2,17 +2,18 @@
   "name": "socketburner",
   "version": "0.0.0",
   "description": "A WebSocket script mirroring service for bitburner.",
-  "main": "server/index.js",
+  "main": "built/server/index.js",
   "repository": "git@github.com:MasonD/socketburner.git",
   "author": "Mason Dechaineux <masonpcd@gmail.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@types/node": "^14.0.5",
     "http": "^0.0.0",
     "node-watch": "^0.6.2",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.3.0"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node built/server/index.js --poll"
   }
 }
