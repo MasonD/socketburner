@@ -20,7 +20,7 @@ cd socketburner/
 yarn
 ```
 
-Then save all the scripts in `built/home/` into their in-game equivalents using the in-game `nano`. E.g., for `built/socketburner.js`:
+Then save all the scripts in `built/home/` into their in-game equivalents using the in-game `nano`. E.g., for `built/home/socketburner.js`:
 ```
 nano socketburner.js
 ```

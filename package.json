@@ -14,6 +14,6 @@
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "start": "node built/server/index.js"
+    "start": "node built/server/index.js --poll"
   }
 }
